@@ -1,0 +1,57 @@
+<h2>Student Dashboard</h2>
+<a href="/student/update">Update Information</a>
+<form action="/student/delete" method="POST">
+    <button type="submit">Delete Account</button>
+</form>
+<h2>Name: <%= student.name %></h2>
+
+<h3>Your Classes</h3>
+
+<table border="1px solid">
+    <tr>
+        <th>Course Name</th>
+        <th>Teacher Name</th>
+        <th>Unenroll from a Course</th>
+    </tr>
+
+    <% myCourses.forEach(element => { %>
+        <tr>
+            <td><%= element.name %></td>
+            <td><%= element.teacher %></td>
+            <td><form action="/unenroll" method="POST">
+                <input type="hidden" name="id" value="<%= element.id %>" id="">
+                <button type="submit">Unenroll</button>
+            </form></td>
+        </tr>
+    <% }); %>
+
+</table>
+
+<h3>All Courses</h3>
+<h3>Select any Course if you want from below list</h3>
+<table border="1px solid">
+    <tr>
+        <th>Course Id</th>
+        <th>Coure Name</th>
+    </tr>
+    <% courses.forEach(element => { %>
+        <tr>
+            <td><%= element.id %></td>
+            <td><%= element.name %></td>
+        </tr>
+    <% }); %>
+
+</table>
+    
+
+
+<form action="/selectcourse" method="POST">
+    <label for="coursenumber">Enter the Course id and Submit</label><br>
+    <input type="number" name="coursenumber" >
+    <button type="submit">Submit</button>
+</form>
+<br>
+
+<form action="/logout" method="POST">
+    <button type="submit">Logout</button>
+</form>

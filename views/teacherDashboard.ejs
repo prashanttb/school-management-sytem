@@ -1,0 +1,30 @@
+<h2>Teacher Dashboard</h2>
+<h2>Name: <%= teacher.name %></h2>
+<h2>Course: <%= myCourse.name %></h2>
+
+<h2>Students Enrolled in <%= myCourse.name %> Course:</h2>
+<table border="1p solid">
+    <tr>
+        <th>Student Id</th>
+        <th>Student Name</th>
+        <th>Remove a Student</th>
+    </tr>
+    <% myStudents.forEach(element => { %>
+        <tr>
+            <td><%= element.id %></td>
+            <td><%= element.name %></td>
+            <td>
+                <form action="/remove" method="POST">
+                    <input type="hidden" name="id" value="<%= element.id %>" id="">
+                    <button type="submit">Remove</button>
+                </form>
+            </td>
+        </tr>
+    <% }); %>
+    
+</table>
+<br>
+
+<form action="/logout" method="POST">
+    <button type="submit">Logout</button>
+</form>
